@@ -34,22 +34,27 @@ export class EkitaldiakService {
 // opendata euskadi webgunean, ekitaldien APIaren atalean, endpointen informazio guztia dago, frogatzeko aukera ere
 // ruta bukaera adibidea
 // /events/byType/4?_elements=20&_page=1' 
-  getEkitaldiakMotarenArabera(id:number, page:number, elements:number):Observable<Ekitaldi[]>{ // ekitaldi motared id eta paginaziorako parametroak, orrialdea eta orrialde bakoitzeko elementu kopurua
-    return this.http.get<Ekitaldi[]>(this.apiUrl+'/events/byType/'+id+'?_elements='+elements+'&_page='+page); // paginazio parametroak ere urlan sartu
+  getEkitaldiakMotarenArabera(id:string, page:string, elements:string):Observable<EkitaldiakResponse>{ // ekitaldi motared id eta paginaziorako parametroak, orrialdea eta orrialde bakoitzeko elementu kopurua
+    return this.http.get<EkitaldiakResponse>(this.apiUrl+'/events/byType/'+id+'?_elements='+elements+'&_page='+page); // paginazio parametroak ere urlan sartu
   }
 
 }
 
 export interface EkitaldiMotak{
-  id:number;
+  id:string;
   // nameEs: string; // APIak propietate hori bueltatzen duen arren, aplikazio honetan ez da erabiliko. !!! Erantzunetik ez da ezabatuko propietatea, interfazean ez dagoen arren, beraz zuzenean ignoratu
   nameEu:string;
 }
 
 export interface Ekitaldi{
-  id: number;
+  id: string;
+  nameEu: string;
   startDate:string;
   municipalityEu:string;
   priceEu:string;
   // askoz propietate gehiaho endpointaren erantzunean, baina soilik hauek erabiliko dira aplikazio honetan. Erantzunean bai egongo dira, baina ignoratuko ditugu
+}
+
+export interface EkitaldiakResponse{
+  items:Ekitaldi[];
 }

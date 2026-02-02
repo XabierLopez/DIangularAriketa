@@ -2,12 +2,12 @@
 <!-- ngClass angular atributuarekin ere egin daiteke -->
 
 @if(horizontala()){
-    <nav class="fixed top-0 right-0">
+    <nav class="top-0 right-0">
         <ul class="flex gap-4">
             <!-- httpget erantzuna jaso den konprobatu, bestela "kargatzen" mezua erakutsi -->
             @if(ekitaldiMotak().length > 0){
                 @for(ekitaldiMota of ekitaldiMotak(); track ekitaldiMota.id){
-                    <li class="px-2 py-1 rounded hover:bg-gray-200">{{ekitaldiMota.nameEu}}</li>
+                    <li class="px-2 py-1 rounded hover:bg-gray-200"><a routerLink="/ekitaldiak/{{ekitaldiMota.id}}">{{ekitaldiMota.nameEu}}</a></li>
                 }
             }@else{
                 <li>Motak kargatzen, itxaron mesez...</li>
@@ -16,11 +16,11 @@
         </ul>
     </nav>
 }@else{
-    <nav class="fixed top-0 left-0 h-full">
+    <nav class="top-0 left-0 h-full">
         <ul class="flex flex-col gap-2">
             @if(ekitaldiMotak().length > 0){
                 @for(ekitaldiMota of ekitaldiMotak(); track ekitaldiMota.id){
-                    <li class="px-2 py-1 rounded hover:bg-gray-200">{{ekitaldiMota.nameEu}}</li>
+                    <li class="px-2 py-1 rounded hover:bg-gray-200"><a routerLink="/ekitaldiak/{{ekitaldiMota.id}}">{{ekitaldiMota.nameEu}}</a></li>
                 }
             }@else{
                 <li>Motak kargatzen, itxaron mesez...</li>

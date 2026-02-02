@@ -1,7 +1,13 @@
 import { Routes } from '@angular/router';
 import { Home } from './home/home';
+import { Ekitaldiak } from './ekitaldiak/ekitaldiak';
 
 export const routes: Routes = [
+    {
+        path:'ekitaldiak/:id', //soilik parametro nagusia (motaren id) hemen, paginazio parametroak ez
+        component: Ekitaldiak,
+        title: 'Ekitaldiak'
+    },
     {
         path:'home',
         component: Home,

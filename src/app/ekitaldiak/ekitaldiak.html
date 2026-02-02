@@ -1,1 +1,24 @@
-<p>ekitaldiak works!</p>
+<table>
+    <thead>
+        <tr>
+            <th>Izena</th>
+            <th>Data</th>
+            <th>Herria</th>
+            <th>Zenbat</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(ekitaldiak().length > 0){
+            @for(ekitaldi of ekitaldiak();track ekitaldi.id){
+            <tr>
+                <td>{{ekitaldi.nameEu}}</td>
+                <td>{{ekitaldi.startDate}}</td>
+                <td>{{ekitaldi.municipalityEu}}</td>
+                <td>{{ekitaldi.priceEu}}</td>
+            </tr>
+            }
+        }@else{
+
+        }
+    </tbody>
+</table>

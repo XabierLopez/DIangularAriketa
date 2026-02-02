@@ -2,10 +2,11 @@ import { Component, signal } from '@angular/core';
 import { input } from '@angular/core';
 import { EkitaldiakService } from '../zerbitzuak/ekitaldiak-service';
 import { EkitaldiMotak } from '../zerbitzuak/ekitaldiak-service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-nabigazioa',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './nabigazioa.html',
   styleUrl: './nabigazioa.css',
 })
