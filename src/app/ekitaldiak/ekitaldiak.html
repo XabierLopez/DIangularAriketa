@@ -1,26 +1,37 @@
 <table>
     <thead>
         <tr>
-            <th>Izena</th>
-            <th>Data</th>
-            <th>Herria</th>
-            <th>Zenbat</th>
+            <th class="pl-4 bg-gray-950 text-red-600 hover:bg-red-600 hover:text-gray-950">Izena</th>
+            <th class="p-4 bg-red-600 text-gray-950 hover:bg-gray-950 hover:text-red-600">Data</th>
+            <th class="pl-4 bg-gray-950 text-red-600 hover:bg-red-600 hover:text-gray-950">Herria</th>
+            <th  class="p-4 bg-red-600 text-gray-950 hover:bg-gray-950 hover:text-red-600">Zenbat</th>
         </tr>
     </thead>
     <tbody>
         <!-- null bezala inizializatu dugunez eta subscribean erantzun hutsak beti [] izango direnez, kargatzen... eta erantzun hutsen egoerak bereizten dira  -->
         @if(ekitaldiak()==null){
-            <tr>Kargatzen...</tr>
+            <tr class="p-4 bg-red-600 text-gray-950 hover:bg-gray-950 hover:text-red-600">Kargatzen...</tr>
         }@else if(ekitaldiak()!.length==0){
-            <tr>Ez dago mota honetako ekitaldirik</tr>
+            <tr class="p-4 bg-red-600 text-gray-950 hover:bg-gray-950 hover:text-red-600">Ez dago mota honetako ekitaldirik</tr>
         }@else{
             @for(ekitaldi of ekitaldiak();track ekitaldi.id){
-            <tr>
-                <td>{{ekitaldi.nameEu}}</td>
-                <td>{{ekitaldi.startDate}}</td>
-                <td>{{ekitaldi.municipalityEu}}</td>
-                <td>{{ekitaldi.priceEu}}</td>
-            </tr>
+                @if($index%2==0){
+                    <tr>
+                        <td class="p-4 bg-red-600 text-gray-950 hover:bg-gray-950 hover:text-red-600">{{ekitaldi.nameEu}}</td>
+                        <td class="p-4 bg-gray-950 text-red-600 hover:bg-red-600 hover:text-gray-950">{{ekitaldi.startDate}}</td>
+                        <td class="p-4 bg-red-600 text-gray-950 hover:bg-gray-950 hover:text-red-600">{{ekitaldi.municipalityEu}}</td>
+                        <td class="p-4 bg-gray-950 text-red-600 hover:bg-red-600 hover:text-gray-950">{{ekitaldi.priceEu}}</td>
+                    </tr>
+                }@else{
+                    <tr>
+                        <td class="p-4 bg-gray-950 text-red-600 hover:bg-red-600 hover:text-gray-950">{{ekitaldi.nameEu}}</td>
+                        <td class="p-4 bg-red-600 text-gray-950 hover:bg-gray-950 hover:text-red-600">{{ekitaldi.startDate}}</td>
+                        <td class="p-4 bg-gray-950 text-red-600 hover:bg-red-600 hover:text-gray-950">{{ekitaldi.municipalityEu}}</td>
+                        <td class="p-4 bg-red-600 text-gray-950 hover:bg-gray-950 hover:text-red-600">{{ekitaldi.priceEu}}</td>
+                    </tr>
+                    
+                }
+                
             }
         }
     </tbody>
