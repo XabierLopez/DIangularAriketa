@@ -8,7 +8,12 @@
         </tr>
     </thead>
     <tbody>
-        @if(ekitaldiak().length > 0){
+        <!-- null bezala inizializatu dugunez eta subscribean erantzun hutsak beti [] izango direnez, kargatzen... eta erantzun hutsen egoerak bereizten dira  -->
+        @if(ekitaldiak()==null){
+            <tr>Kargatzen...</tr>
+        }@else if(ekitaldiak()!.length==0){
+            <tr>Ez dago mota honetako ekitaldirik</tr>
+        }@else{
             @for(ekitaldi of ekitaldiak();track ekitaldi.id){
             <tr>
                 <td>{{ekitaldi.nameEu}}</td>
@@ -17,8 +22,6 @@
                 <td>{{ekitaldi.priceEu}}</td>
             </tr>
             }
-        }@else{
-
         }
     </tbody>
 </table>

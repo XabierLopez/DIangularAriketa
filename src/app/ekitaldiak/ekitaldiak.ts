@@ -12,7 +12,7 @@ import { EkitaldiakService } from '../zerbitzuak/ekitaldiak-service';
 })
 export class Ekitaldiak {
   urlId: string | null = null;
-  ekitaldiak = signal<Ekitaldi[]>([]);
+  ekitaldiak = signal<Ekitaldi[]|null>(null); //null bezala inizializatuz [] ordez, httpget-aren erantzuna itxaroten ari den edo erantzuna hutsik dagoen ezberdindu daiteke beti
 
   constructor(private route: ActivatedRoute, private ekitaldiakService: EkitaldiakService) {
   }
@@ -24,7 +24,8 @@ export class Ekitaldiak {
         console.log('urlId:', this.urlId);
         this.ekitaldiakService.getEkitaldiakMotarenArabera(this.urlId ? this.urlId : '1', '1', '20').subscribe( //urlan id ez badago, 1
           (ekitaldiakErantzuna) => {
-            this.ekitaldiak.set(ekitaldiakErantzuna.items);
+            let items=ekitaldiakErantzuna && ekitaldiakErantzuna.items ? ekitaldiakErantzuna.items : []; //erantzunaren items [] ez izanez gero erantzun hutsetan, adbidez null, [] bihurtu. Horrela null hasiera balioa eta [] erantzun hutsa bereizten dira.
+            this.ekitaldiak.set(items);
             console.log(ekitaldiakErantzuna.items);
           }
         );
